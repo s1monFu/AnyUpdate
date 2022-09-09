@@ -7,7 +7,8 @@ import Box from "@mui/material/Box";
 import GoalTracking from "./GoalTracking";
 import ProjectOverview from "./ProjectOverview";
 import Calendar from "./Calendar";
-import { positions } from "@mui/system";
+import { positions, width } from "@mui/system";
+import Settings from "./Settings";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,7 +61,8 @@ function Dashboard() {
           display: "flex",
           height: "100vh",
           borderLeft: "0",
-          left:"0"
+          left:"0",
+          p:0
         }}
       >
         <Tabs
@@ -85,17 +87,24 @@ function Dashboard() {
             {...a11yProps(1)}
           />
           <Tab label="Calendar" sx={{ fontSize: "18px" }} {...a11yProps(2)}  />
-          <Tab label="Settings" center sx={{ fontSize: "18px", position:"fixed", bottom:"0"}} {...a11yProps(2)}  />
+
+          <Tab label="Settings" sx={{ fontSize: "18px", position:"fixed", bottom:"0px", width:"225px"}} {...a11yProps(3)}  />
         </Tabs>
 
         <TabPanel value={value} index={0}>
           <ProjectOverview></ProjectOverview>
         </TabPanel>
+        
         <TabPanel value={value} index={1}>
           <GoalTracking></GoalTracking>
         </TabPanel>
+
         <TabPanel value={value} index={2}>
           <Calendar></Calendar>
+        </TabPanel>
+
+        <TabPanel value={value} index={3}>
+          <Settings></Settings>
         </TabPanel>
       </Box>
     </Box>
